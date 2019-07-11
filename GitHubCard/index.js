@@ -3,14 +3,6 @@
            https://api.github.com/users/<your name>
 */
 
-axios.get('https://api.github.com/users/bigknell')
-  .then(response =>{
-    console.log(response.data);
-  })
-  .catch(error =>{
-    console.log(error);
-  })
-
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -36,7 +28,24 @@ axios.get('https://api.github.com/users/bigknell')
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  'tetondan',
+  'dustinmyers',
+  'justsml',
+  'luishrd',
+  'bigknell',
+];
+
+followersArray.forEach(username=>{
+  let cards = document.querySelector('.cards');
+  axios.get(`https://api.github.com/users/${username}`)
+  .then(response =>{
+    cards.appendChild(gitCard(response.data));
+  })
+  .catch(error =>{
+    console.log(error);
+  })
+})
 
 
 
@@ -74,11 +83,12 @@ function gitCard(object){
   //assign textContent
   name.textContent = object['name'];
   username.textContent = object['login'];
-  location.textContent = object['location'];
+  location.textContent = "Location: " + object['location'];
   address.textContent = object['html_url'];
-  followers.textContent = object['followers'];
-  following.textContent = object['following'];
-  bio.textContent = object['bio'];
+  profile.textContent = "Profile: "
+  followers.textContent = "Followers: " +object['followers'];
+  following.textContent = "Following: " +object['following'];
+  bio.textContent = "Bio: " + object['bio'];
 
   //append things
   cardDiv.appendChild(img);
@@ -86,17 +96,14 @@ function gitCard(object){
   infoDiv.appendChild(name);
   infoDiv.appendChild(username);
   infoDiv.appendChild(location);
+  profile.appendChild(address);
   infoDiv.appendChild(profile);
-  infoDiv.appendChild(address);
   infoDiv.appendChild(followers);
   infoDiv.appendChild(following);
   infoDiv.appendChild(bio);
 
 
-
-
-
-  
+  return cardDiv;
 }
 
 /* Step 3: Create a function that accepts a single object as its only argument,
