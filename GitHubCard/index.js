@@ -80,6 +80,19 @@ function gitCard(object){
   following.textContent = object['following'];
   bio.textContent = object['bio'];
 
+  //append things
+  cardDiv.appendChild(img);
+  cardDiv.appendChild(infoDiv);
+  infoDiv.appendChild(name);
+  infoDiv.appendChild(username);
+  infoDiv.appendChild(location);
+  infoDiv.appendChild(profile);
+  infoDiv.appendChild(address);
+  infoDiv.appendChild(followers);
+  infoDiv.appendChild(following);
+  infoDiv.appendChild(bio);
+
+
 
 
 
