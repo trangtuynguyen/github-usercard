@@ -38,25 +38,7 @@ axios.get('https://api.github.com/users/bigknell')
 
 const followersArray = [];
 
-/* Step 3: Create a function that accepts a single object as its only argument,
-          Using DOM methods and properties, create a component that will return the following DOM element:
 
-<div class="card">
-  <img src={image url of user} />
-  <div class="card-info">
-    <h3 class="name">{users name}</h3>
-    <p class="username">{users user name}</p>
-    <p>Location: {users location}</p>
-    <p>Profile:  
-      <a href={address to users github page}>{address to users github page}</a>
-    </p>
-    <p>Followers: {users followers count}</p>
-    <p>Following: {users following count}</p>
-    <p>Bio: {users bio}</p>
-  </div>
-</div>
-
-*/
 
 /* List of LS Instructors Github username's: 
   tetondan
@@ -89,6 +71,37 @@ function gitCard(object){
   img.setAttribute('src', object['avatar_url']);
   address.setAttribute('href', object['html_url']);
 
+  //assign textContent
+  name.textContent = object['name'];
+  username.textContent = object['login'];
+  location.textContent = object['location'];
+  address.textContent = object['html_url'];
+  followers.textContent = object['followers'];
+  following.textContent = object['following'];
+  bio.textContent = object['bio'];
+
+
+
 
   
 }
+
+/* Step 3: Create a function that accepts a single object as its only argument,
+          Using DOM methods and properties, create a component that will return the following DOM element:
+
+<div class="card">
+  <img src={image url of user} />
+  <div class="card-info">
+    <h3 class="name">{users name}</h3>
+    <p class="username">{users user name}</p>
+    <p>Location: {users location}</p>
+    <p>Profile:  
+      <a href={address to users github page}>{address to users github page}</a>
+    </p>
+    <p>Followers: {users followers count}</p>
+    <p>Following: {users following count}</p>
+    <p>Bio: {users bio}</p>
+  </div>
+</div>
+
+*/
