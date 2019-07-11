@@ -81,7 +81,14 @@ function gitCard(object){
   const following = document.createElement('p');
   const bio = document.createElement('p');
   
-  //add class
-  cardDiv.classList.add("card");
+  //add class/attributes
+  cardDiv.classList.add('card');
+  infoDiv.classList.add('card-info');
+  name.classList.add('name');
+  username.classList.add('username');
+  img.setAttribute('src', object['avatar_url']);
+  address.setAttribute('href', object['html_url']);
+
+
   
 }
